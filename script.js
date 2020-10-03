@@ -20,13 +20,6 @@ const resultList = [
   "result8",
 ];
 
-// const isHover = (cardInnerId, isHover) => {
-//   const cardInner = document.getElementById(cardInnerId);
-//   if (isHover) {
-//     cardInner.animate("shake");
-//   }
-// };
-
 const shuffle = () => {
   let prize = [
     "ได้รับเงินรางวัล 5x",
@@ -39,11 +32,22 @@ const shuffle = () => {
     "เสียเงินรางวัล",
   ];
 
+  let randomPrize;
   // random prize into back of card
   resultList.map((record) => {
+    const index = Math.floor(random(1, prize.length)) - 1;
+    const text = prize[index];
+    randomPrize = text;
     const result = document.getElementById(record);
-    result.innerHTML = prize[1];
+    result.innerHTML = text;
   });
+  prize.filter((rec) => {
+    console.log(rec);
+    return rec != randomPrize;
+  });
+};
+const random = (mn, mx) => {
+  return Math.random() * (mx - mn) + mn;
 };
 
 const handleClick = (cardInnerId) => {
@@ -64,4 +68,15 @@ const resetAll = () => {
     }
   });
   shuffle();
+};
+
+const openAll = () => {
+  console.log("c");
+  cardName.map((card) => {
+    const cardInner = document.getElementById(card);
+    console.log(cardInner.classList);
+    if (!cardInner.classList.contains("fliped")) {
+      cardInner.classList += " fliped";
+    }
+  });
 };
