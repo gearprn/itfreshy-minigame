@@ -89,7 +89,8 @@ const resetAll = () => {
       cardInner.classList.remove("fliped");
     }
   });
-  shuffle();
+
+  setTimeout(shuffle, 500);
 };
 
 const openAll = () => {
